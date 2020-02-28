@@ -1,3 +1,4 @@
+# this is phelipe
 """
 Django settings for split project.
 
