@@ -77,10 +77,7 @@ WSGI_APPLICATION = 'split.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'split_development',
-        'USER': 'phelipefernandes',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': 'split_development'
     }
 }
 
