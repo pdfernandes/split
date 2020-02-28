@@ -1,6 +1,4 @@
 # Hi I'm alvin
-
-
 """
 Django settings for split project.
 
