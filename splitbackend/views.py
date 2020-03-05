@@ -18,9 +18,7 @@ class Hello(APIView):
 
 @api_view(['POST'])
 def user_create(request):
-    print('before load json')
     user_credentials = json.loads(request.body)
-    print('able to load json')
     try:
         user = User(username=user_credentials['username'], email=user_credentials['email'])
         user.set_password(user_credentials['password'])
