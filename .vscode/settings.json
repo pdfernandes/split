@@ -2,4 +2,7 @@
     "python.linting.pycodestyleEnabled": true,
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
+    "python.linting.pycodestyleArgs": [
+        "--max-line-length=120"
+    ]
 }
