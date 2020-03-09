@@ -1,11 +1,12 @@
 import json
-from rest_framework import status
+from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
-
 from django.contrib.auth.models import User
+from .models import Tab
+from .serializers import TabSerializer
 
 
 class Hello(APIView):
@@ -26,3 +27,13 @@ def user_create(request):
         return Response({'message': 'success'}, status=status.HTTP_201_CREATED)
     except Exception:
         return Response({'message': 'fail'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class TabList(generics.ListCreateAPIView):
+    queryset = Tab.objects.all()
+    serializer_class = TabSerializer
+
+
+class TabDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Tab.objects.all()
+    serializer_class = TabSerializer
