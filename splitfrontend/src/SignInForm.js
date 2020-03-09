@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 const SignInForm = (props) => {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
@@ -20,7 +19,10 @@ const SignInForm = (props) => {
     
     if (response.status === 200) {
       const token = await response.json();
-      console.log(token);
+      console.log('LOGIN SUCCESS', token);
+    } else {
+      const info = await response.json();
+      console.log('LOGIN FAIL', info.detail);
     }
   };
 
