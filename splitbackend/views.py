@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
 from django.contrib.auth.models import User
-from .models import Tab
+from .models import Tab, Profile
 from .serializers import TabSerializer
 
 
@@ -29,8 +29,13 @@ def user_create(request):
         return Response({'message': 'fail'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-class TabList(generics.ListCreateAPIView):
-    queryset = Tab.objects.all()
+class ParticipatedTabList(generics.ListAPIView):
+    queryset = Profile.tabs
+    serializer_class = TabSerializer
+
+
+class OwnedTabList(generics.ListCreateAPIView):
+    queryset = Profile.owned_tabs
     serializer_class = TabSerializer
 
 
