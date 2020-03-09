@@ -25,4 +25,4 @@ def user_create(request):
         user.save()
         return Response({'message': 'success'}, status=status.HTTP_201_CREATED)
     except Exception:
-        return Response({'message': 'fail'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({'message': 'fail'}, status=status.HTTP_400_BAD_REQUEST)

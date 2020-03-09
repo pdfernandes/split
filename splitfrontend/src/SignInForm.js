@@ -19,10 +19,10 @@ const SignInForm = (props) => {
     
     if (response.status === 200) {
       const token = await response.json();
-      console.log('LOGIN SUCCESS', token);
+      console.log('SIGN IN SUCCESS', token);
     } else {
       const info = await response.json();
-      console.log('LOGIN FAIL', info.detail);
+      console.log('SIGN IN FAIL', info.detail);
     }
   };
 
