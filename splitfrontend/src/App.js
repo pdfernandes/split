@@ -1,16 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import SignInForm from './SignInForm';
+import SignUpForm from './SignUpForm';
+
 const App = () => {
   return <>
-    <h2>app</h2>
     <Router>
       <Switch>
         <Route path="/signin">
-          signin!!
+          <SignInForm />
         </Route>
         <Route path="/signup">
-          signup!!
+          <SignUpForm />
         </Route>
       </Switch>
     </Router>
