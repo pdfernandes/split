@@ -29,7 +29,15 @@ class Item(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    
+    # def clean(self):
+    #     if self.cost < 0:
+    #         raise ValidationError("Cost must be atleast 0.")
+
+    # def save(self, *args, **kwargs):
+    #     self.full_clean()
+    #     return super(Item, self).save(*args, **kwargs)
+
+
 class Split(models.Model):
     def __str__(self):
         return self.percent
