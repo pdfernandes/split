@@ -30,13 +30,6 @@ def user_create(request):
         return Response({'message': 'fail'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-# class ProfileList(generics.CreateAPIView):
-#     def perform_create(self, serializer):
-#         serializer.save(owner=self.request.user)
-#     queryset = Profile.objects.all()
-#     serializer_class = ProfileSerializer
-
-
 class ParticipatedTabList(generics.ListAPIView):
     queryset = Profile.tabs
     serializer_class = TabSerializer
