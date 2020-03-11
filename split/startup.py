@@ -4,6 +4,7 @@ import django
 def seed():
     django.setup()
     from django.contrib.auth.models import User
+    from splitbackend.models import Profile
     User.objects.all().delete()
 
     user_1 = User(username='azab', email='azablan@gmail.com')

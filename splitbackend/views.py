@@ -6,7 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
 from django.contrib.auth.models import User
 from .models import Tab, Profile
-from .serializers import TabSerializer
+from .serializers import TabSerializer, ProfileSerializer
 
 
 class Hello(APIView):
@@ -24,9 +24,17 @@ def user_create(request):
         user = User(username=user_credentials['username'], email=user_credentials['email'])
         user.set_password(user_credentials['password'])
         user.save()
+        Profile.objects.create(user=user)
         return Response({'message': 'success'}, status=status.HTTP_201_CREATED)
     except Exception:
         return Response({'message': 'fail'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+# class ProfileList(generics.CreateAPIView):
+#     def perform_create(self, serializer):
+#         serializer.save(owner=self.request.user)
+#     queryset = Profile.objects.all()
+#     serializer_class = ProfileSerializer
 
 
 class ParticipatedTabList(generics.ListAPIView):
