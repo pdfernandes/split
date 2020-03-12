@@ -27,7 +27,7 @@ def user_create(request):
         Profile.objects.create(user=user)
         return Response({'message': 'success'}, status=status.HTTP_201_CREATED)
     except Exception:
-        return Response({'message': 'fail'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({'message': 'fail'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class TabList(generics.ListCreateAPIView):
