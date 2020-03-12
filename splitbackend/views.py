@@ -30,17 +30,34 @@ def user_create(request):
         return Response({'message': 'fail'}, status=status.HTTP_400_BAD_REQUEST)
 
 
-class TabList(generics.ListCreateAPIView):
+class ParticipatedTabList(generics.ListAPIView):
+    serializer_class = TabSerializer
+
+    def get_queryset(self):
+        return self.request.user.profile.tabs
+
+
+class OwnedTabList(generics.ListAPIView):
+    serializer_class = TabSerializer
+
+    def get_queryset(self):
+        return self.request.user.owned_tabs
+
+
+class CreateTab(generics.CreateAPIView):
     queryset = Tab.objects.all()
     serializer_class = TabSerializer
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user.profile.first())
+        serializer.save(owner=self.request.user.profile)
 
 
 class TabDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Tab.objects.all()
     serializer_class = TabSerializer
+
+    def get_queryset(self):
+        profile = self.request.user
+        return Tab.objects.filter(profile=profile)
 
 
 class ProfileList(generics.ListAPIView):
