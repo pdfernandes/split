@@ -3,6 +3,7 @@ from .models import Tab, Profile
 
 
 class TabSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = Tab
