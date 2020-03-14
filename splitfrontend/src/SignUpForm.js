@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../assets/stylesheets/signup.css"
 
 const SignUpForm = (props) => {
   const [ email, setEmail ] = useState('');
@@ -27,9 +28,9 @@ const SignUpForm = (props) => {
   };
 
   return <>
-    <form onSubmit={handleSubmit}>
+    <form className="signup-form" onSubmit={handleSubmit}>
       <label>email </label>
-      <input type="email" value={email} onChange={handleEmailChange} />
+      <input className="email" type="email" value={email} onChange={handleEmailChange} />
       <label>username </label>
       <input type="text" value={username} onChange={handleUsernameChange} />
       <label>password </label>
