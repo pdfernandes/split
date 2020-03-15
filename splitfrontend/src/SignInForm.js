@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../assets/stylesheets/signup.css";
 
 const SignInForm = (props) => {
   const [ username, setUsername ] = useState('');
@@ -27,7 +28,7 @@ const SignInForm = (props) => {
   };
 
   return <>
-    <form onSubmit={handleSubmit}>
+    <form className="signup-form" onSubmit={handleSubmit}>
       <label>username </label>
       <input type="text" value={username} onChange={handleUsernameChange} />
       <label>password </label>
